@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DraugiemSampleApp</string>
+    <string name="authorize">Authorize</string>
+    <string name="logout">Logout</string>
+    <string name="pay">Pay</string>
+
+</resources>
