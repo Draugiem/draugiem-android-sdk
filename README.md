@@ -1,9 +1,9 @@
-DraugiemApi
+Draugiem Android SDK
 ===========
-Include this project in your workspace 
+Include this project in your workspace.
 
-this lib has to be included as library on your android app
+This lib has to be included as library on your android app.
 
 ![alt tag](http://i.stack.imgur.com/e9uWl.jpg)
 
-you can find sample app here https://github.com/mstrengis/DraugiemSampleApp 
+You can find sample app here https://github.com/Draugiem/draugiem-android-sdk
