@@ -1,5 +1,6 @@
-Draugiem Android SDK
+Draugiem.lv Android SDK
 ===========
+Draugiem.lv Android SDK for authorisation and payments
 
 
 Build with Gradle
