@@ -1,9 +1,9 @@
 Draugiem.lv Android SDK
 ===========
-Draugiem.lv Android SDK for authorisation and payments.
+Android SDK for authorisation and payments via https://draugiem.lv.
 
 
-Setup steps
+How to set up SDK?
 ===============
 ### 0. Create your draugiem.lv application, if you haven't yet.
 
@@ -13,9 +13,12 @@ Fill in the details. You should end up with something like this:
 ![App creation form](https://user-images.githubusercontent.com/100644/90143432-48812200-dd86-11ea-8139-14985381aac6.png)
 
 1. Take note of your _Application API key_ (Latvian: _Aplikācijas API atslēga_; `0360f381d755cd966e3c4a98c5664e63` in the example).
-2. Generate hash code from you release APK (the same way) and add it to the field on the same page:
+2. Generate hash code for your keystores using this command:
 
-`keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore | openssl sha1 -binary | openssl base64`
+* for debug build: `keytool -exportcert -alias androiddebugkey -keystore ~/.android/debug.keystore | openssl sha1 -binary | openssl base64`
+* release build: `keytool -exportcert -alias <YOUR_RELEASE_KEY_ALIAS> -keystore <YOUR_RELEASE_KEY_PATH> | openssl sha1 -binary | openssl base64`
+
+The results would look like this: `xC/AvLAFNbAR61n4E2+VNQzEKyI=`. Add those to the "Android key hash" field on the app settings page.
 
 **Important**! After you add full information, you should write to Draugiem support (api@draugiem.lv) to get your app approved. If you plan to support users' payments via Draugiem wallet, ask the support to enable it.
 
@@ -99,7 +102,7 @@ draugiemSDK.getTransactionId(<payment ID>, new TransactionCallback() {
     }
 });
 ```
-3. Delete the wallet/SMS purchase to Dragiem app via `DraugiemAuth.payment()`:
+3. Delegate the wallet/SMS purchase to Dragiem app via `DraugiemAuth.payment()`:
 ```
 draugiemSDK.payment(<transaction ID>, new PaymentCallback(){
     @Override
@@ -150,6 +153,3 @@ draugiemSDK.payment(<transaction ID>, new PaymentCallback(){
 ```
 
 Don't forget to pass the result intent inside `onActivityResult()` the same way it was done for authorisation.
-
-### 4. Example
-You can find sample app here https://github.com/mstrengis/DraugiemSampleApp
