@@ -27,7 +27,7 @@ The results would look like this: `xC/AvLAFNbAR61n4E2+VNQzEKyI=`. Add those to t
 To authorize your application's user in Draugiem you would need to include Draugiem SDK dependency:
 
 ```
-implementation 'lv.draugiem:AndroidSDK:1.0.1'
+implementation 'lv.draugiem:AndroidSDK:1.0.2-SNAPSHOT'
 ```
     
 Instantiate Draugiem SDK in your activity with the aforementioned application API key:
@@ -90,15 +90,16 @@ authCallback = new AuthCallback() {
 
 ![Two types of payments](https://user-images.githubusercontent.com/100644/90149895-b41abd80-dd8d-11ea-96b1-5db4e10d23c0.png)
 
-2. Initiate payment with `DraugiemAuth.getTransactionId()` by passing payment ID, get transcation ID in a callback.
+2. Initiate payment with `DraugiemAuth.getTransactionId()` by passing payment ID and price (A. `null` if this payment has fixed price or B. euro cents, if this payment has dynamic price). You will get transcation ID in a callback.
 ```
-draugiemSDK.getTransactionId(<payment ID>, new TransactionCallback() {
+draugiemSDK.getTransactionId(<payment ID>, <price>, new TransactionCallback() {
     @Override
     public void onTransaction(final int id, String url) {
-        if (id == 0) {
-            // TODO show error;
-            return;
-        }
+        // here you get transcation ID and url with iframe if no Draugiem app installed
+    }
+    @Override
+    public void onError(int code, String error) {
+        // TODO show error;
     }
 });
 ```
