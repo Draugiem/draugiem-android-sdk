@@ -44,6 +44,9 @@ mAuthorizeButton.setOnClickListener(new OnClickListener() {
                 draugiemSDK.authorize(authCallback);
             }
         });
+```
+If you were logged in the past, you may get user and token via this call:
+```
 draugiemSDK.authorizeFromCache(authCallback);
 ```
 2. Add onActivityResult() to the same activity
@@ -82,6 +85,7 @@ authCallback = new AuthCallback() {
     }
 };
 ```
+4. You can always logout: ```draugiemSDK.logout()```
 
 ### 3. Set up payments:
 
